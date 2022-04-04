@@ -41,3 +41,16 @@ function onCommand(input)
         chat.sendMessage("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     end
 end
+
+if client.isHost() then function tick()
+    local count = 0
+    for _, slot in pairs(action_wheel) do
+        if type(slot) == "table" then
+            if slot.getFunction() ~= nil then
+                count = count + 1
+            end
+        end
+    end
+    action_wheel.setLeftSize(math.floor(count/2.0))
+    action_wheel.setRightSize(math.ceil(count/2.0))
+end end
