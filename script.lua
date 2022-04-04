@@ -33,4 +33,11 @@ function spawn()
     end
 end
 
+yaszu = 1
+losoa = 0
 
+function onCommand(input)
+    if input == "$rickroll" then
+        chat.sendMessage("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+    end
+end
