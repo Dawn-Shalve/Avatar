@@ -137,3 +137,53 @@ end
 function slot3()
     animation.overhead_wave.play()
 end
+
+action_wheel.SLOT_5.setTitle("Point")
+action_wheel.SLOT_5.setFunction(function() point() end)
+
+function point()
+    animation.communication_point.play()
+    network.ping("slot5")
+end
+
+function slot5()
+    animation.communication_point.play()
+end
+
+
+action_wheel.SLOT_6.setTitle("follow")
+action_wheel.SLOT_6.setFunction(function() follow() end)
+
+function follow()   
+    animation.communication_follow_me.play()
+    network.ping("slot6")
+end
+
+function slot6()
+    animation.communication_follow_me.play()
+end
+
+
+action_wheel.SLOT_7.setTitle("hat fly")
+action_wheel.SLOT_7.setFunction(function() hatfly() end)
+
+function hatfly()
+    animation.hat.play()
+    network.ping("slot7")
+end
+
+function slot7()
+    animation.hat.play()
+end
+
+action_wheel.SLOT_8.setTitle("stop anim")
+action_wheel.SLOT_8.setFunction(function() stop() end)
+
+function stop()
+    animation.stopAll()
+    network.ping("slot8")
+end
+
+function slot8()
+    animation.stopAll()
+end
