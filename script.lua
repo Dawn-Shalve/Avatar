@@ -204,6 +204,11 @@ end
 HP=player.getHealth()
 pos=player.getPos()
 
+function wait(seconds)
+    local start = os.time()
+    repeat until os.time() > start + seconds
+  end
+
 
 lol = true
 
@@ -212,6 +217,37 @@ do
     particle.addParticle("cloud", {player.getPos(), 1, 1, 1})
 end
 
+network.registerPing("rightfnflol")
+network.registerPing("leftfnflol")
+network.registerPing("upfnflol")
+network.registerPing("downfnflol")
 
 
-particle.addParticle("cloud", {player.getPos(), 1, 1, 1})
+
+left= keybind.newKey("lefty", "LEFT")
+
+function leftfnf()
+    if left.isPressed then
+        network.ping("leftfnflol")
+        animation.Left.play()
+        wait(0.2)
+        animation.stopAll()
+    end
+end
+
+function leftfnflol()
+        animation.Left.play()
+        wait(0.2)
+        animation.stopAll()   
+end
+
+right = keybind.newKey("righty", "RIGHT")
+
+function rightfnf()
+    animation.Right.play()
+    wait(0.2)
+    animation.stopAll()
+end
+
+up = keybind.newKey("Upy", "UP")
+
