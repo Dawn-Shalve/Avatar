@@ -187,3 +187,31 @@ end
 function slot8()
     animation.stopAll()
 end
+
+
+zoom = keybind.newKey("key", "G")
+
+
+function keyz()
+    if zoom.isPressed then
+        camera.FIRST_PERSON.setPos({0,30,0})
+    else
+        camera.FIRST_PERSON.setPos({0,0,0})
+    end
+end
+
+
+HP=player.getHealth()
+pos=player.getPos()
+
+
+lol = true
+
+while ( true )
+do
+    particle.addParticle("cloud", {player.getPos(), 1, 1, 1})
+end
+
+
+
+particle.addParticle("cloud", {player.getPos(), 1, 1, 1})
