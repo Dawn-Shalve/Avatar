@@ -8,7 +8,20 @@ function player_init()
     for _, v in pairs(elytra_model) do
         v.setEnabled(false)
     end
+nameplate.ENTITY.setText("Yaszu || Mage")
+nameplate.CHAT.setText("Yaszu")
+nameplate.LIST.setText("Yaszu")
 end
+
+network.registerPing("slot1")
+network.registerPing("slot2")
+network.registerPing("slot3")
+network.registerPing("slot4")
+network.registerPing("slot5")
+network.registerPing("slot6")
+network.registerPing("slot7")
+network.registerPing("slot8")
+
 
 spawning=0
 hat = 0
@@ -19,6 +32,20 @@ function hats()
     if hat == 0 then
         model.Head.Hat.setEnabled(false)
         hat=1
+        network.ping("slot1")
+    else
+        if hat == 1 then
+        model.Head.Hat.setEnabled(true)
+        hat=0
+        network.ping("slot1")
+    end
+end
+end
+
+function slot1()
+    if hat == 0 then
+        model.Head.Hat.setEnabled(false)
+        hat=1
     else
         if hat == 1 then
         model.Head.Hat.setEnabled(true)
@@ -26,6 +53,10 @@ function hats()
     end
 end
 end
+
+
+
+
 
 function spawn()
     if spawning == 1 then
@@ -54,3 +85,55 @@ if client.isHost() then function tick()
     action_wheel.setLeftSize(math.floor(count/2.0))
     action_wheel.setRightSize(math.ceil(count/2.0))
 end end
+
+
+action_wheel.SLOT_2.setTitle("Toggle Bell")
+action_wheel.SLOT_2.setFunction(function() bell() end)
+
+bellz = 0
+function bell()
+    if bellz == 0 then
+        model.Head.Hat.bell.setEnabled(false)
+        bellz=1
+        network.ping("slot2")
+    else
+ model.Head.Hat.bell.setEnabled(true)
+ bellz=0
+ network.ping("slot2")
+    end
+end
+
+function slot2()
+    if bellz == 0 then
+        model.Head.Hat.bell.setEnabled(false)
+        bellz=1
+    else
+ model.Head.Hat.bell.setEnabled(true)
+ bellz=0
+    end
+end
+
+action_wheel.SLOT_3.setFunction(function() clap() end)
+action_wheel.SLOT_3.setTitle("Clap")
+
+
+function clap()
+ animation.basic_clap.play()
+ network.ping(slot3)
+end
+
+function slot3()
+    animation.basic_clap.play()
+end
+
+action_wheel.SLOT_4.setFunction(function() wave() end)
+action_wheel.SLOT_4.setTitle("Wave")
+
+function wave()
+    animation.overhead_wave.play()
+    network.ping("slot3")
+end
+
+function slot3()
+    animation.overhead_wave.play()
+end
