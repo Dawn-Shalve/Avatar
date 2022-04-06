@@ -8,9 +8,6 @@ function player_init()
     for _, v in pairs(elytra_model) do
         v.setEnabled(false)
     end
-nameplate.ENTITY.setText("Yaszu || Mage")
-nameplate.CHAT.setText("Yaszu")
-nameplate.LIST.setText("Yaszu")
 end
 
 network.registerPing("slot1")
@@ -119,7 +116,7 @@ action_wheel.SLOT_3.setTitle("Clap")
 
 function clap()
  animation.basic_clap.play()
- network.ping(slot3)
+ network.ping("slot3")
 end
 
 function slot3()
@@ -168,12 +165,12 @@ action_wheel.SLOT_7.setTitle("hat fly")
 action_wheel.SLOT_7.setFunction(function() hatfly() end)
 
 function hatfly()
-    animation.hat.play()
+    animation.hatspin.play()
     network.ping("slot7")
 end
 
 function slot7()
-    animation.hat.play()
+    animation.hatspin.play()
 end
 
 action_wheel.SLOT_8.setTitle("stop anim")
@@ -201,9 +198,6 @@ function keyz()
 end
 
 
-HP=player.getHealth()
-pos=player.getPos()
-
 function wait(seconds)
     local start = os.time()
     repeat until os.time() > start + seconds
@@ -212,10 +206,6 @@ function wait(seconds)
 
 lol = true
 
-while ( true )
-do
-    particle.addParticle("cloud", {player.getPos(), 1, 1, 1})
-end
 
 network.registerPing("rightfnflol")
 network.registerPing("leftfnflol")
